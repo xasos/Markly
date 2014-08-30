@@ -1,0 +1,7 @@
+{
+  "name": "Markly",
+  "description": "A simple tool to tag and organize your bookmarks.",
+  "repository": "https://github.com/xasos/Markly",
+  "logo": "http://i.imgur.com/DPUcdts.png",
+  "keywords": ["node", "angular", "bookmarks"]
+}
