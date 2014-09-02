@@ -2,6 +2,7 @@ angular.module('marklyApp', [
 
 ])
 .controller('MainCtrl', function($scope) {
+
     //sample data
     $scope.categories = [
         {"id": 0, "name": "Development"},
