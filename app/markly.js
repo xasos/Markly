@@ -23,4 +23,14 @@ angular.module('marklyApp', [
           {"id": 8, "title": "Dump", "url": "http://dump.com", "category": "Humor" }
       ];
 
+      $scope.currentCategory = null;
+
+      $scope.isCurrentCategory = function(category) {
+        return $scope.currentCategory !== null && category.name === $scope.currentCategory.name;
+      }
+
+      $scope.setCurrentCategory = function setCurrentCategory(category) {
+          $scope.currentCategory = category;
+      }
+
 });
