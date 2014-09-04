@@ -29,16 +29,6 @@
                         <a href="{{bookmark.url}}" target="_blank">{{bookmark.title}}</a>
                     </div>
                     <hr/>
-                    <!-- CREATING -->
-                    <div ng-if="shouldShowCreating()">
-                        <button type="button" class="btn btn-link" ng-click="startCreating()">
-                            <span class="glyphicon glyphicon-plus"></span>
-                            Create Bookmark
-                        </button>
-                    <div ng-if="isCreating">
-                      Create a bookmark!
-                      <button type="button" class="btn btn-default btn-lg pull-right" ng-click="cancelCreating()">Cancel</button>
-                    </div>
                 </div>
             </div>
         </div>

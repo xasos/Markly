@@ -57,7 +57,7 @@ angular.module('marklyApp', [
         return $scope.currentCategory && !$scope.isEditing;
       }
 
-      $scope.shouldShowEditing() = function() {
+      $scope.shouldShowEditing = function() {
           return $scope.isEditing && !$scope.isCreating;
       }
 
