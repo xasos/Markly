@@ -33,4 +33,32 @@ angular.module('marklyApp', [
           $scope.currentCategory = category;
       }
 
+      $scope.isCreating = false;
+      $scope.isEditing = false;
+
+      $scope.startCreating = function() {
+        $scope.isCreating = true;
+      }
+
+      $scope.cancelCreating = function() {
+        $scope.isCreating = false;
+      }
+
+      $scope.startEditing = function() {
+        $scope.isCreating = false;
+        $scope.isEditing = true;
+      }
+
+      $scope.cancelEditing = function()  {
+          $scope.isEditing = false;
+      }
+
+      $scope.shouldShowCreating = function() {
+        return $scope.currentCategory && !$scope.isEditing;
+      }
+
+      $scope.shouldShowEditing() = function() {
+          return $scope.isEditing && !$scope.isCreating;
+      }
+
 });
