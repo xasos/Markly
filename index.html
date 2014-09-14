@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="marklyApp">
+<html ng-app="marklyApp" ng-cloak>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
@@ -25,10 +25,28 @@
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                     <div ng-repeat="bookmark in bookmarks | filter:{category:currentCategory.name}">
                         <button type="button" class="close">&times;</button>
-                        <button type="button" class="btn btn-link"><span class="glyphicon glyphicon-pencil"></span></button>
+                        <button type="button" ng-click="startEditing()"class="btn btn-link"><span class="glyphicon glyphicon-pencil"></span></button>
                         <a href="{{bookmark.url}}" target="_blank">{{bookmark.title}}</a>
                     </div>
                     <hr/>
+
+                    <!-- Creating -->
+                    <div ng-if="shouldShowCreating()">
+                        <button type="button" class="btn btn-link" ng-click="startCreating()">
+                            <span class="glyphicon glyphicon-plus"></span>
+                            Create Bookmark
+                        </button>
+                        <div ng-if="isCreating">
+                            Create a bookmark!
+                            <button type="button" class="btn btn-default btn-lg pull-right" ng-click="cancelCreating()">Cancel</button>
+                        </div>                            
+                    </div>
+
+                    <!-- Editing -->
+                    <div ng-if="shouldShowEditing()">
+                        Edit a bookmark!
+                        <button type="button" class="btn btn-default btn-lg pull-right" ng-click="cancelEditing()">Cancel</button>
+                    </div>
                 </div>
             </div>
         </div>

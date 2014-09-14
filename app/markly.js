@@ -33,11 +33,13 @@ angular.module('marklyApp', [
           $scope.currentCategory = category;
       }
 
+      // Creating and Editing States
       $scope.isCreating = false;
       $scope.isEditing = false;
 
       $scope.startCreating = function() {
         $scope.isCreating = true;
+        $scope.isEditing = false;
       }
 
       $scope.cancelCreating = function() {
