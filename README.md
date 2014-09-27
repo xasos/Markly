@@ -5,6 +5,8 @@ Markly
 ## What is Markly?
 Markly is a powerful bookmark manager with tagging, sharing, and managing. Written in AngularJS.
 
+**NOTICE**: Not complete, under active development.
+
 ## How do I use Markly?
 Navigate over to http://markly.herokuapp.com to get started.
 
