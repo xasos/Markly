@@ -34,6 +34,21 @@ angular.module('marklyApp', [])
           cancelEditing();
       }
 
+      $scope.resetCreateForm() {
+        $scope.newBookmark = {
+          title: '',
+          url: '',
+          category: $scope.currentCategory
+        }
+      }
+
+      $scope.createBookmark = function(bookmark) {
+        bookmark.id = $scope.bookmarks.length;
+        $scope.bookmarks.push(bookmark);
+
+        resetCreateForm();
+      }
+
       // Creating and Editing States
       $scope.isCreating = false;
       $scope.isEditing = false;
@@ -41,6 +56,8 @@ angular.module('marklyApp', [])
       $scope.startCreating = function() {
         $scope.isCreating = true;
         $scope.isEditing = false;
+
+        resetCreateForm();
       }
 
       $scope.cancelCreating = function() {
