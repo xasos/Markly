@@ -27,14 +27,14 @@ angular.module('marklyApp', [])
         return $scope.currentCategory !== null && category.name === $scope.currentCategory.name;
       }
 
-      $scope.setCurrentCategory = function setCurrentCategory(category) {
+      $scope.setCurrentCategory = function(category) {
           $scope.currentCategory = category;
 
-          cancelCreating();
-          cancelEditing();
+          $scope.cancelCreating();
+          $scope.cancelEditing();
       }
 
-      $scope.resetCreateForm() {
+      $scope.resetCreateForm = function() {
         $scope.newBookmark = {
           title: '',
           url: '',
@@ -46,7 +46,7 @@ angular.module('marklyApp', [])
         bookmark.id = $scope.bookmarks.length;
         $scope.bookmarks.push(bookmark);
 
-        resetCreateForm();
+        $scope.resetCreateForm();
       }
 
       // Creating and Editing States
@@ -57,7 +57,7 @@ angular.module('marklyApp', [])
         $scope.isCreating = true;
         $scope.isEditing = false;
 
-        resetCreateForm();
+        $scope.resetCreateForm();
       }
 
       $scope.cancelCreating = function() {
