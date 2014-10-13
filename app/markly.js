@@ -49,6 +49,32 @@ angular.module('marklyApp', [])
         $scope.resetCreateForm();
       }
 
+      $scope.editedBookmark = null;
+
+      $scope.setEditedBookmark = function(bookmark) {
+        $scope.editedBookmark = angular.copy(bookmark);
+      }
+
+      $scope.updateBookmark = function(bookmark) {
+        var index = _.findIndex($scope.bookmarks, function(b) {
+          return b.id == bookmark.id;
+        });
+        $scope.bookmarks[index] = bookmark;
+
+        $scope.editedBookmark = null;
+        $scope.isEditing = null;
+      }
+
+      $scope.isSelectedBookmark = function(bookmarkId) {
+          return $scope.editedBookmark != null && $scope.editedBookmark.id === bookmarkId;
+      }
+
+      $scope.deleteBookmark = function(bookmark) {
+        _.remove($scope.bookmarks, function(b) {
+            return b.id == bookmark.id;
+        });
+      }
+
       // Creating and Editing States
       $scope.isCreating = false;
       $scope.isEditing = false;
