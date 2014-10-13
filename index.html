@@ -23,9 +23,9 @@
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <div ng-repeat="bookmark in bookmarks | filter:{category:currentCategory.name}">
-                        <button type="button" class="close">&times;</button>
-                        <button type="button" ng-click="startEditing()"class="btn btn-link"><span class="glyphicon glyphicon-pencil"></span></button>
+                    <div ng-class="{'active':isSelectedBookmark(bookmarkId)}" ng-repeat="bookmark in bookmarks | filter:{category:currentCategory.name}">
+                        <button type="button" ng-click="deleteBookmark(bookmark)" class="close">&times;</button>
+                        <button type="button" ng-click="setEditedBookmark(bookmark);startEditing()" class="btn btn-link"><span class="glyphicon glyphicon-pencil"></span></button>
                         <a href="{{bookmark.url}}" target="_blank">{{bookmark.title}}</a>
                     </div>
                     <hr/>
@@ -36,16 +36,36 @@
                             <span class="glyphicon glyphicon-plus"></span>
                             Create Bookmark
                         </button>
-                        <div ng-if="isCreating">
-                            Create a bookmark!
-                            <button type="button" class="btn btn-default btn-lg pull-right" ng-click="cancelCreating()">Cancel</button>
-                        </div>                            
+                        <form class="create-form" ng-show="isCreating" role="form" ng-submit="createBookmark(newBookmark)">
+                            <div class="form-group">
+                                <label for="newBookmarkTitle">Bookmark Title</label>
+                                <input type="text" class="form-control" id="newBookmarkTitle" ng-model="newBookmark.title" placeholder="Enter title"></input>
+                            </div>
+                            <div class="form-group">
+                                <label for="newBookmarkURL">Bookmark URL</label>
+                                <input type="text" class="form-control" id="newBookmarkURL" ng-model="newBookmark.url" placeholder="Enter URL"></input>
+                            </div>
+                            <button type="submit" class="btn btn-info btn-lg">Create</button>
+                            <button class="btn btn-default btn-lg pull-right" ng-click="cancelCreating()">Cancel</button>
+                        </form>                          
                     </div>
 
                     <!-- Editing -->
-                    <div ng-if="shouldShowEditing()">
-                        Edit a bookmark!
-                        <button type="button" class="btn btn-default btn-lg pull-right" ng-click="cancelEditing()">Cancel</button>
+                    <div ng-show="shouldShowEditing()">
+                        <h4>Editing {{editedBookmark.title}}</h4>
+
+                        <form class="edit-form" role="form" ng-submit="updateBookmark(editedBookmark)" novalidate>
+                            <div class="form-group">
+                                <label>Bookmark Title</label>
+                                <input class="form-control" ng-model="editedBookmark.title" placeholder="Enter title"></input>
+                            </div>
+                            <div class="form-group">
+                                <label>Bookmark URL</label>
+                                <input class="form-control" ng-model="editedBookmark.url" placeholder="Enter URL"></input>
+                            </div>                        
+                            <button type="submit" class="btn btn-info btn-lg">Save</button>
+                            <button type="submit" class="btn btn-default btn-lg pull-right" ng-click="cancelEditing()">Cancel</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -57,6 +77,5 @@
         <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
         <script src="app/markly.js"></script>
-
     </body>
 </html>
