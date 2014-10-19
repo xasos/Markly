@@ -8,5 +8,5 @@ Markly is a powerful bookmark manager with tagging, sharing, and managing. Writt
 ## How do I use Markly?
 Navigate over to http://markly.herokuapp.com to get started.
 
-You can also instantl deploy your own instance to heroku:
+You can also deploy your own instance to heroku instantly:<br>
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/xasos/Markly)
